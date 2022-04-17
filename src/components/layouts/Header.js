@@ -1,25 +1,25 @@
 import React, { Fragment } from 'react'
 import { Route, Link } from 'react-router-dom'
 
-// import { useDispatch, useSelector } from 'react-redux'
-// import { useAlert } from 'react-alert'
-// import { logout } from '../../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAlert } from 'react-alert'
+import { logout } from '../../actions/userActions'
 
-// import Search from './Search'
+import Search from './Search'
 
 import '../../App.css'
 
 const Header = () => {
-    // const alert = useAlert();
-    // const dispatch = useDispatch();
+    const alert = useAlert();
+    const dispatch = useDispatch();
 
     const { user, loading } = useSelector(state => state.auth)
     const { cartItems } = useSelector(state => state.cart)
 
-    // const logoutHandler = () => {
-    //     dispatch(logout());
-    //     alert.success('Logged out successfully.')
-    // }
+    const logoutHandler = () => {
+        dispatch(logout());
+        alert.success('Logged out successfully.')
+    }
 
     return (
         <Fragment>
@@ -32,9 +32,9 @@ const Header = () => {
                     </div>
                 </div>
 
-                {/* <div className="col-12 col-md-6 mt-2 mt-md-0">
+                <div className="col-12 col-md-6 mt-2 mt-md-0">
                     <Route render={({ history }) => <Search history={history} />} />
-                </div> */}
+                </div>
 
                 <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
                     <Link to="/cart" style={{ textDecoration: 'none' }} >
@@ -63,9 +63,9 @@ const Header = () => {
                                 )}
                                 <Link className="dropdown-item" to="/orders/me">Orders</Link>
                                 <Link className="dropdown-item" to="/me">Profile</Link>
-                                {/* <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
+                                <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
                                     Logout
-                                </Link> */}
+                                </Link>
 
                             </div>
 
